@@ -14,6 +14,7 @@ public class Case {
 	private List<Character> characters;
 	private int coorX;
 	private int coorY;
+	//private Room room;
 	
 	
 	public Case() {
@@ -56,6 +57,12 @@ public class Case {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+	public void addAnItem(Item item) {
+		this.items.add(item);
+	}
+	public void deleteAnItem(Item item) {
+		this.items.remove(item);
+	}
 	public List<Character> getCharacters() {
 		return characters;
 	}
@@ -63,8 +70,13 @@ public class Case {
 		this.characters = characters;
 	}
 	
-	public void setAcharacter(Character character) {
+	public void addAcharacter(Character character) {
 		this.characters.add(character);
+		character.setPosition(this);
+	}
+	public void deleteAcharacter(Character character) {
+		this.characters.remove(character);
+		character.setPosition(null);
 	}
 	public int getX() {
 		return coorX;
@@ -82,6 +94,7 @@ public class Case {
 		this.coorY = coorY;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Case [coorX= " + coorX +", coorY= " + coorY +", name=" + name + ", items=" + items + ", characters=" + characters
@@ -89,8 +102,27 @@ public class Case {
 	}
 
 	public void draw() {
-		if(this.characters.size() == 1) {
-			characters.get(0).draw();
+		if(this.characters.size() > 0) {
+			if(this.items.size()>0) {
+				System.out.print("M");
+			}
+			else if(this.characters.size() !=1) {
+				System.out.print("M");
+			}
+			else {
+				characters.get(0).getSymbol();
+			}	
+		}
+		else if(this.items.size() > 0){
+			if(this.characters.size()>0) {
+				System.out.print("M");
+			}
+			else if(this.items.size() !=1) {
+				System.out.print("M");
+			}
+			else {
+			items.get(0).getSymbol();
+			}
 		}
 		else {
 			System.out.print(" ");

@@ -22,6 +22,5 @@ public class Donjon {
 	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
-	
-	
+		
 }

@@ -28,7 +28,7 @@ public class Dragon extends Monster {
 	}
 
 	@Override
-	public void draw() {
+	public void getSymbol() {
 		// TODO Auto-generated method stub
 		System.out.print("D");
 	}
@@ -38,6 +38,15 @@ public class Dragon extends Monster {
 		// TODO Auto-generated method stub
 		return new Dragon(getName(), getHp(), getForce(), getDefense(), getLevel());
 	}
+
+
+
+	@Override
+	public void dropItem() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 }

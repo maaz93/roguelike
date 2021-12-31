@@ -27,6 +27,10 @@ public class Potionhp extends Consommable {
 		return new Potionhp(getHp());
 	}
 	
-	
+	@Override
+	public void getSymbol() {
+		// TODO Auto-generated method stub
+		System.out.println("p");
+	}
 	
 }

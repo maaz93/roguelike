@@ -24,4 +24,10 @@ public class Epee extends Arme{
 		return new Epee(getForce());
 	}
 
+	@Override
+	public void getSymbol() {
+		// TODO Auto-generated method stub
+		System.out.println("e");
+	}
+
 }

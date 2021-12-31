@@ -62,7 +62,7 @@ public class RoomBuilder {
 			y = (int)(Math.random()*hauteur);
 			if (this.plateau.get(y).get(x).getCharacters().size() == 0) {
 				Character c = F.getRandomMonster(difficulte);
-				this.plateau.get(y).get(x).setAcharacter(c);
+				this.plateau.get(y).get(x).addAcharacter(c);
 				
 			}
 			else {

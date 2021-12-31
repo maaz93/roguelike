@@ -11,7 +11,7 @@ public class Fantome extends Monster{
 		// TODO Auto-generated constructor stub
 	}
 	@Override
-	public void draw() {
+	public void getSymbol() {
 		// TODO Auto-generated method stub
 		System.out.print("F");
 	}
@@ -20,5 +20,13 @@ public class Fantome extends Monster{
 		// TODO Auto-generated method stub
 		return new Fantome(getName(), getHp(), getForce(), getDefense(), getLevel());
 	}
+	
+	@Override
+	public void dropItem() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 }

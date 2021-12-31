@@ -26,6 +26,7 @@ public class Plateau<T> extends ArrayList<ArrayList<Case>> {
 		}
 	}
 
+
 	@Override
 	public Plateau<T> clone() {
 		// TODO Auto-generated method stub

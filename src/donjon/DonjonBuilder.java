@@ -28,7 +28,6 @@ public class DonjonBuilder {
 		this.reset();
 		RoomBuilder Rb = new RoomBuilder();
 		for (Room room : donjon.getRooms()) {
-			System.out.println(room);
 			this.rooms.add(Rb.clone(room).build());
 		}
 		return this;
@@ -39,7 +38,7 @@ public class DonjonBuilder {
 	 * Renvoie un donjon par défaut avec 3 salles
 	 */
 	public Donjon build() {
-		if (this.rooms == null) {
+		if (this.rooms == null || this.rooms.size()==0) {
 			this.rooms = new ArrayList<Room>();
 			this.nbRooms(3);
 		}

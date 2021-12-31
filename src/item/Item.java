@@ -18,6 +18,8 @@ public abstract class Item {
 
 	@Override
 	public abstract Item clone() ;
+
+	public abstract void getSymbol();
 	
 	
 }

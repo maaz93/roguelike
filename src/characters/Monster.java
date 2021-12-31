@@ -30,5 +30,9 @@ public abstract class Monster extends Character {
 	@Override
 	public abstract Monster clone();
 		// TODO Auto-generated method stub	
+
+
+	
+	
 	
 }

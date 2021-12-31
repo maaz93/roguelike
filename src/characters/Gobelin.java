@@ -15,7 +15,7 @@ public class Gobelin extends Monster {
 	}
 
 	@Override
-	public void draw() {
+	public void getSymbol() {
 		// TODO Auto-generated method stub
 		System.out.print("G");
 	}
@@ -24,6 +24,12 @@ public class Gobelin extends Monster {
 	public Monster clone() {
 		// TODO Auto-generated method stub
 		return new Gobelin(getName(), getHp(), getForce(), getDefense(), getLevel());
+	}
+
+	@Override
+	public void dropItem() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
