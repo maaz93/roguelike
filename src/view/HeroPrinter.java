@@ -3,7 +3,7 @@ package view;
 import characters.Hero;
 
 public class HeroPrinter {
-	public void update(Hero hero) {
-		hero.toString();
+	public static void update(Hero hero) {
+		System.out.println(hero);
 	}
 }

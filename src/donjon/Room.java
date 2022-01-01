@@ -1,12 +1,15 @@
 package donjon;
 
 import java.util.Arrays;
+import java.util.List;
+
+import characters.Character;
 
 public class Room {
 	private Plateau<Case> plateau;
 	private int longueur;
 	private int hauteur;
-	private int nbmonster;
+	private List<Character> monsters;
 	private int difficulte;
 
 	public Room() {
@@ -23,12 +26,12 @@ public class Room {
 		
 	}
 
-	public Room(Plateau<Case> plateau2, int nbmonster, int difficulte) {
+	public Room(Plateau<Case> plateau2, List<Character> monsters, int difficulte) {
 		// TODO Auto-generated constructor stub
 		this.plateau = plateau2;
 		this.hauteur = plateau2.size();
 		this.longueur = plateau2.get(0).size();
-		this.setNbmonster(nbmonster);
+		this.setMonsters(monsters);
 		this.setDifficulte(difficulte);
 		
 	}
@@ -60,12 +63,12 @@ public class Room {
 	}
 	
 
-	public int getNbmonster() {
-		return nbmonster;
+	public List<Character> getMonsters() {
+		return monsters;
 	}
 
-	public void setNbmonster(int nbmonster) {
-		this.nbmonster = nbmonster;
+	public void setMonsters(List<Character> monsters) {
+		this.monsters = monsters;
 	}
 
 	public int getDifficulte() {
@@ -77,7 +80,6 @@ public class Room {
 	}
 	
 	public void affiche() {
-		System.out.println("plateau : " +plateau.hashCode()+" room:"+hashCode());
 		for (int i = 0; i < longueur ; i++) {
 			for (int j = 0; j < hauteur; j++) {
 				System.out.println(plateau.get(j).get(i));
@@ -88,7 +90,7 @@ public class Room {
 	@Override
 	public String toString() {
 		return "Room [longueur=" + longueur + ", hauteur=" + hauteur
-				+ ", nbmonster=" + nbmonster + ", difficulte=" + difficulte + "]";
+				+ ", nbmonster=" + monsters.size() + ", difficulte=" + difficulte + "]";
 	}
 	
 	public void draw() {

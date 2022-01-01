@@ -13,6 +13,7 @@ public class Hero extends Character{
 		super.setHp(maxHP);
 		super.setDefense(4);
 		super.setForce(20);
+		inventaire = new Inventaire();
 	}
 
 	public static Hero getInstance() {

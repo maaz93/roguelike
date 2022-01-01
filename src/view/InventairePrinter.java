@@ -4,7 +4,7 @@ import item.Inventaire;
 
 public class InventairePrinter {
 	
-	public void update(Inventaire inventaire) {
+	public static void update(Inventaire inventaire) {
 		inventaire.draw();
 	}
 }

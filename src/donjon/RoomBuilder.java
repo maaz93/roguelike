@@ -1,13 +1,19 @@
 package donjon;
 
 import characters.FabriqueMonster;
+import characters.Monster;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import characters.Character;
 
 public class RoomBuilder {
 	private Plateau<Case> plateau;
 	private int hauteur;
 	private int longueur;
-	private int nbmonster;
+	private List<Character> monsters;
+	private int nbMonster;
 	private int difficulte;
 	private boolean clonage = false;
 	
@@ -24,7 +30,7 @@ public class RoomBuilder {
 	}
 	
 	public RoomBuilder nbMonster(int nbmonster) {
-		this.nbmonster = nbmonster;
+		nbMonster = nbmonster;
 		return this;
 	}
 	public RoomBuilder difficulte(int difficulte) {
@@ -37,19 +43,22 @@ public class RoomBuilder {
 		this.plateau = room.getPlateau();
 		this.hauteur = room.getHauteur();
 		this.longueur = room.getLongueur();
-		this.nbmonster = room.getNbmonster();
+		this.monsters = room.getMonsters();
 		this.difficulte = room.getDifficulte();
 		return this;
 	}
 	public Room build() {
 		if(clonage == true) {
-			return new Room(plateau,nbmonster,difficulte);
+			return new Room(plateau,monsters,difficulte);
 		}
 		if (plateau == null) {
 			dimension(5,5);
 		}
-		if(nbmonster == 0 ) {
-			nbmonster = 3;
+		if(monsters == null) {
+			monsters = new ArrayList<Character>();
+		}
+		if(nbMonster == 0 ) {
+			nbMonster = 3;
 		}
 		if(difficulte == 0) {
 			difficulte = 1;
@@ -57,12 +66,13 @@ public class RoomBuilder {
 		FabriqueMonster F = new FabriqueMonster();
 		int x = 0;
 		int y = 0;
-		for (int i = 0; i < nbmonster; i++) {
+		for (int i = 0; i < nbMonster; i++) {
 			x = (int)(Math.random()*longueur);
 			y = (int)(Math.random()*hauteur);
 			if (this.plateau.get(y).get(x).getCharacters().size() == 0) {
 				Character c = F.getRandomMonster(difficulte);
 				this.plateau.get(y).get(x).addAcharacter(c);
+				monsters.add(c);
 				
 			}
 			else {
@@ -70,6 +80,6 @@ public class RoomBuilder {
 			}
 		}
 		
-		return new Room(plateau,nbmonster,difficulte);
+		return new Room(plateau,monsters,difficulte);
 	}
 }

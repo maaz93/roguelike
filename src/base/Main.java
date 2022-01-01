@@ -5,6 +5,7 @@ import java.util.List;
 
 import characters.Character;
 import characters.FabriqueMonster;
+import characters.Monster;
 import donjon.Case;
 import donjon.Donjon;
 import donjon.DonjonBuilder;
@@ -93,6 +94,8 @@ public class Main {
 		for (int j = 0; j < 10; j++) {
 			System.out.println((int)(1+Force*2*Math.random()*2 / Def));
 		}
+		List<Monster> monsters = new ArrayList<Monster>(2);
+		System.out.println(monsters.size());
 		
 		Game game = new Game();
 		game.run();

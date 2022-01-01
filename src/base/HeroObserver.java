@@ -9,6 +9,7 @@ public class HeroObserver {
 	public HeroObserver(Hero hero) {
 		instance = this;
 		this.hero = hero;
+
 	}
 	
 	

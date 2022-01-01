@@ -4,6 +4,8 @@ import characters.Hero;
 import donjon.Donjon;
 import donjon.DonjonBuilder;
 import donjon.Room;
+import view.HeroPrinter;
+import view.RoomPrinter;
 
 public class Game {
 	private static Game game;
@@ -12,6 +14,7 @@ public class Game {
 	
 	public Game() {
 		super();
+		game = this;
 	}
 
 	public void startGame() {
@@ -30,6 +33,14 @@ public class Game {
 	public void loop() {
 		while (hero.isAlive()) {
 			Controller.getKey(hero,currentRoom);
+			notifyPrinters();
 		}
 	}
+	
+	public void notifyPrinters() {
+		RoomPrinter.update(currentRoom);
+		HeroPrinter.update(hero);
+	}
+	
+
 }
