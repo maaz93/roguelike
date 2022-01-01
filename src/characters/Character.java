@@ -146,8 +146,8 @@ public abstract class Character implements Cloneable{
 	
 	}
 	
-	public int attack(Character c1) {
-		return (int)(1+getForce()*2*Math.random()*2 / c1.getDefense());
+	public void attack(Character c1) {
+		 c1.takeDamage((int)(1+getForce()*2*Math.random()*2 / c1.getDefense()));
 	}
 	
 	public void takeDamage(int damage) {
