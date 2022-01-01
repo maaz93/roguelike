@@ -12,7 +12,7 @@ public class RoomBuilder {
 	private Plateau<Case> plateau;
 	private int hauteur;
 	private int longueur;
-	private List<Character> monsters;
+	private List<Monster> monsters;
 	private int nbMonster;
 	private int difficulte;
 	private boolean clonage = false;
@@ -55,7 +55,7 @@ public class RoomBuilder {
 			dimension(5,5);
 		}
 		if(monsters == null) {
-			monsters = new ArrayList<Character>();
+			monsters = new ArrayList<Monster>();
 		}
 		if(nbMonster == 0 ) {
 			nbMonster = 3;
@@ -70,9 +70,9 @@ public class RoomBuilder {
 			x = (int)(Math.random()*longueur);
 			y = (int)(Math.random()*hauteur);
 			if (this.plateau.get(y).get(x).getCharacters().size() == 0) {
-				Character c = F.getRandomMonster(difficulte);
-				this.plateau.get(y).get(x).addAcharacter(c);
-				monsters.add(c);
+				Monster m = F.getRandomMonster(difficulte);
+				this.plateau.get(y).get(x).addAcharacter(m);
+				monsters.add(m);
 				
 			}
 			else {

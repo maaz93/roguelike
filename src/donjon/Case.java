@@ -108,6 +108,7 @@ public class Case {
 			}
 			else if(this.characters.size() !=1) {
 				System.out.print("M");
+				//System.out.println(toString());
 			}
 			else {
 				characters.get(0).getSymbol();

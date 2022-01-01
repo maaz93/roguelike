@@ -4,12 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import characters.Character;
+import characters.Monster;
 
 public class Room {
 	private Plateau<Case> plateau;
 	private int longueur;
 	private int hauteur;
-	private List<Character> monsters;
+	private List<Monster> monsters;
 	private int difficulte;
 
 	public Room() {
@@ -26,7 +27,7 @@ public class Room {
 		
 	}
 
-	public Room(Plateau<Case> plateau2, List<Character> monsters, int difficulte) {
+	public Room(Plateau<Case> plateau2, List<Monster> monsters, int difficulte) {
 		// TODO Auto-generated constructor stub
 		this.plateau = plateau2;
 		this.hauteur = plateau2.size();
@@ -63,11 +64,11 @@ public class Room {
 	}
 	
 
-	public List<Character> getMonsters() {
+	public List<Monster> getMonsters() {
 		return monsters;
 	}
 
-	public void setMonsters(List<Character> monsters) {
+	public void setMonsters(List<Monster> monsters) {
 		this.monsters = monsters;
 	}
 
@@ -121,32 +122,6 @@ public class Room {
 		}
 		System.out.print("  ");
 		System.out.println(" -".repeat(longueur*2));
-		/*for (int i = 0; i < longueur; i++) {
-			System.out.print("  ");
-			if(i==0) {
-				for (int j = 0; j < hauteur; j++) {
-					System.out.print("  "+j+" ");
-				}
-				System.out.println();
-				System.out.print("  ");
-			}
-			
-			System.out.println(" -".repeat(longueur*2));
-			for (int j = 0; j < hauteur; j++) {
-				if(j==0) {
-					System.out.print(i+" | ");
-					plateau.get(j).get(i).draw();
-					System.out.print(" |");
-				}
-				else {
-					System.out.print(" ");
-					plateau.get(j).get(i).draw();
-					System.out.print(" |");
-				}
-				
-			}
-			System.out.println();
-		}*/
 	}
 	
 }

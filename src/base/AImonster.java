@@ -1,14 +1,16 @@
 package base;
 
 import characters.Character;
+import characters.Hero;
+import characters.Monster;
 import donjon.Room;
 
 public class AImonster {
-	private Character hero;
-	private Character monster;
+	private Hero hero;
+	private Monster monster;
 	private Room room;
 	
-	public AImonster(Character monster, Character hero, Room room) {
+	public AImonster(Monster monster, Hero hero, Room room) {
 		super();
 		this.hero = hero;
 		this.monster = monster;
@@ -43,21 +45,21 @@ public class AImonster {
 		int x_hero = hero.getPositionX();
 		int y_hero = hero.getPositionY();
 		
-		//RIGHT
-		if (x_hero < monster.getPositionX()) {
-			monster.move('d',room);
-		}
 		//LEFT
-		else if (x_hero > monster.getPositionX()) {
+		if (x_hero < monster.getPositionX()) {
 			monster.move('q',room);
 		}
-		//DOWN
-		if (y_hero < monster.getPositionY()) {
-			monster.move('s',room);
+		//RIGHT
+		else if (x_hero > monster.getPositionX()) {
+			monster.move('d',room);
 		}
 		//UP
-		else if (y_hero > monster.getPositionY()) {
+		else if (y_hero < monster.getPositionY()) {
 			monster.move('z',room);
+		}
+		//DOWN
+		else if (y_hero > monster.getPositionY()) {
+			monster.move('s',room);
 		}
 	}
 	

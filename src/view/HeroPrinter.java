@@ -1,9 +1,9 @@
 package view;
 
-import characters.Hero;
+import characters.Character;
 
 public class HeroPrinter {
-	public static void update(Hero hero) {
+	public static void update(Character hero) {
 		System.out.println(hero);
 	}
 }
