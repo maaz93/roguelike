@@ -7,6 +7,7 @@ import characters.Character;
 import characters.FabriqueMonster;
 import characters.Monster;
 import donjon.Case;
+import donjon.CaseEscalier;
 import donjon.Donjon;
 import donjon.DonjonBuilder;
 import donjon.Plateau;
@@ -37,6 +38,13 @@ public class Main {
 		Case c4 = new Case();
 		Case c5 = new Case();
 		Case c6 = new Case();
+		Case c7 = new CaseEscalier();
+		
+		System.out.println(c1 instanceof Case);
+		System.out.println(c7 instanceof Case);
+		
+		System.out.println(c1 instanceof CaseEscalier);
+		System.out.println(c7 instanceof CaseEscalier);
 		
 		c1.getCharacters().add(d1);
 		try {

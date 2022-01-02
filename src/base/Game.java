@@ -13,6 +13,7 @@ import view.RoomPrinter;
 
 public class Game {
 	private static Game game;
+	private Donjon donjon;
 	private Room currentRoom;
 	private Hero hero;
 	
@@ -28,7 +29,7 @@ public class Game {
 	public void startGame() {
 		hero = new Hero();
 		DonjonBuilder DB = new DonjonBuilder();
-		Donjon donjon = DB.build();
+		this.donjon = DB.build();
 		donjon.getRooms().get(0).getPlateau().get(0).get(0).addAcharacter(hero);
 		this.currentRoom= donjon.getRooms().get(0);
 		notifyPrinters(0);
@@ -41,17 +42,34 @@ public class Game {
 	
 	public void loop() {
 		while (hero.isAlive()) {
-			int arg = Controller.getKey(hero,currentRoom);
-			if(arg != 0) {
-				notifyPrinters(arg);
+			if(!donjon.NoMonstersLeft()) {
+				int arg = Controller.getKey(hero,currentRoom,donjon);
+
+				//si la room doit être change
+				if(arg == 2) {
+					System.out.println(donjon.getRooms().indexOf(currentRoom)-1);
+					currentRoom = donjon.getRooms().get(donjon.getRooms().indexOf(currentRoom)-1);
+					notifyPrinters(0);
+				}
+				else if (arg == 3) {
+					System.out.println(donjon.getRooms().indexOf(currentRoom)+1);
+					currentRoom = donjon.getRooms().get(donjon.getRooms().indexOf(currentRoom)+1);
+					notifyPrinters(0);
+				}
+				else if(arg==1) {
+					notifyPrinters(1);
+				}
+				else {
+					currentRoom.removeDeadMonsters();
+					monstersTurn();
+					notifyPrinters(0);
+				}
+			}else {
+				System.out.println("Felicitations ! Vous avez gagne");
+				break;
 			}
-			else {
-				currentRoom.removeDeadMonsters();
-				monstersTurn();
-				notifyPrinters(arg);
-			}
-			
 		}
+		System.out.println("Vous etes mort! Vous avez perdu");
 	}
 	
 	public void notifyPrinters(int arg) {
@@ -79,7 +97,8 @@ public class Game {
 		if(currentRoom.getMonsters().size() > 0) {
 			currentRoom.getMonsters().forEach(m -> new AImonster(m,hero,currentRoom).jouerTour());
 		}
-		
+
 	}
+	
 
 }

@@ -7,9 +7,13 @@ import java.util.stream.Collectors;
 
 import base.Controller;
 import donjon.Case;
+import donjon.CaseEscalier;
+import donjon.Donjon;
 import donjon.Room;
 import exceptions.MultipleMonsterNearException;
 import exceptions.NoMonsterNearException;
+import exceptions.NotOnStairsException;
+import exceptions.OutOfBoundaryException;
 import item.Armure;
 import item.Epee;
 import item.Inventaire;
@@ -77,7 +81,13 @@ public class Hero extends Character{
 	@Override
 	public void getSymbol() {
 		// TODO Auto-generated method stub
-		System.out.print("H");
+		if(isAlive()) {
+			System.out.print("H");
+		}
+		else {
+			System.out.print("#");
+		}
+		
 
 	}
 
@@ -136,6 +146,36 @@ public class Hero extends Character{
 		inventaire.remove(arg);
 	}
 	
+	public void takeStairs(char etage,Room room, Donjon donjon) throws OutOfBoundaryException,NotOnStairsException{
+		if (this.getPosition() instanceof CaseEscalier != true) {
+			throw new NotOnStairsException();
+		}
+		else {
+			int roomFloor = donjon.getRooms().indexOf(room);
+			//Monter
+			if (etage == 'p') {
+				if(roomFloor+1 == donjon.getRooms().size()) {
+					throw new OutOfBoundaryException("Vous ne pouvez pas monter plus haut");
+				}
+				else {
+					room.findStairs().deleteAcharacter(this);
+					donjon.getRooms().get(roomFloor+1).findStairs().addAcharacter(this);
+					super.setPosition(donjon.getRooms().get(roomFloor+1).findStairs());
+				}
+			}
+			//Descendre
+			else {
+				if(roomFloor == 0) {
+					throw new OutOfBoundaryException("Vous ne pouvez pas descendre plus bas");
+				}
+				else {
+					room.findStairs().deleteAcharacter(this);
+					donjon.getRooms().get(roomFloor-1).findStairs().addAcharacter(this);
+					super.setPosition(donjon.getRooms().get(roomFloor-1).findStairs());
+				}
+			}
+		}
+	}
 	@Override
 	public String toString() {
 		return "Hero [ level : "+this.getLevel()+", MaxHP : "+this.getMaxHP()+", HP : "+this.getHp()+", Force : "

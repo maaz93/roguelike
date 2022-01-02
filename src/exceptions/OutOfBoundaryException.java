@@ -7,7 +7,7 @@ public class OutOfBoundaryException extends RuntimeException{
 		// TODO Auto-generated constructor stub
 	}
 	public OutOfBoundaryException(String msg) {
-		super("Out of boundary "+msg);
+		super("Out of boundary \n"+msg);
 		// TODO Auto-generated constructor stub
 	}
 

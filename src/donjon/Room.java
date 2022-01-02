@@ -139,4 +139,8 @@ public class Room {
 			monsters.removeAll(deadMonsters);
 		}
 	}
+	
+	public Case findStairs() {
+		return plateau.findStairs();
+	}
 }

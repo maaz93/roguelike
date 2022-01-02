@@ -22,5 +22,14 @@ public class Donjon {
 	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
+	
+	public boolean NoMonstersLeft() {
+		for (Room room : rooms) {
+			if (room.getMonsters().size()> 0) {
+				return false;
+			}
+		}
+		return true;
 		
+	}
 }

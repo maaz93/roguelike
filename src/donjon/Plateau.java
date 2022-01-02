@@ -3,6 +3,8 @@ package donjon;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import exceptions.NoStairsFoundException;
+
 
 public class Plateau<T> extends ArrayList<ArrayList<Case>> {
 	
@@ -26,6 +28,16 @@ public class Plateau<T> extends ArrayList<ArrayList<Case>> {
 		}
 	}
 
+	public Case findStairs() throws NoStairsFoundException{
+		for (ArrayList<Case> arrayList : this) {
+			for (Case case1 : arrayList) {
+				if(case1 instanceof CaseEscalier) {
+					return case1;
+				}
+			}
+		}
+		throw new NoStairsFoundException();
+	}
 
 	@Override
 	public Plateau<T> clone() {

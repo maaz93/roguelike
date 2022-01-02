@@ -66,6 +66,10 @@ public class RoomBuilder {
 		FabriqueMonster F = new FabriqueMonster();
 		int x = 0;
 		int y = 0;
+		x = (int)(Math.random()*longueur);
+		y = (int)(Math.random()*hauteur);
+		this.plateau.get(y).remove(x);
+		this.plateau.get(y).add(x, new CaseEscalier(x,y));
 		for (int i = 0; i < nbMonster; i++) {
 			x = (int)(Math.random()*longueur);
 			y = (int)(Math.random()*hauteur);
@@ -79,6 +83,7 @@ public class RoomBuilder {
 				i--;
 			}
 		}
+		
 		
 		return new Room(plateau,monsters,difficulte);
 	}
