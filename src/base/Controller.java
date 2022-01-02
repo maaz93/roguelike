@@ -56,8 +56,8 @@ public class Controller {
 			System.out.println(c1);
 		}
 		System.out.print("Quelle case voulez vous attaquer?: ");
-		int choix = sc.nextInt()+1;
-		if(choix <= list.size()) {
+		int choix = sc.nextInt()-1;
+		if(choix < list.size()) {
 			hero.attack1(list.get(choix));
 		}
 		else {

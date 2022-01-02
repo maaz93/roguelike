@@ -46,6 +46,7 @@ public class Game {
 				notifyPrinters(arg);
 			}
 			else {
+				currentRoom.removeDeadMonsters();
 				monstersTurn();
 				notifyPrinters(arg);
 			}

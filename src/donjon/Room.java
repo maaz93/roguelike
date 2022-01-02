@@ -1,5 +1,6 @@
 package donjon;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -124,4 +125,18 @@ public class Room {
 		System.out.println(" -".repeat(longueur*2));
 	}
 	
+	public void removeDeadMonsters() {
+		List<Monster> deadMonsters = new ArrayList<Monster>();
+		if(monsters.size()!=0) {
+			for (Monster monster : monsters) {
+				if(!monster.isAlive()) {
+					int x = monster.getPositionX();
+					int y = monster.getPositionY();
+					this.plateau.get(y).get(x).deleteAcharacter(monster);
+					deadMonsters.add(monster);
+				}
+			}
+			monsters.removeAll(deadMonsters);
+		}
+	}
 }
