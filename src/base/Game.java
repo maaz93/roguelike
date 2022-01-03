@@ -5,6 +5,7 @@ import java.util.List;
 import characters.Hero;
 import donjon.Donjon;
 import donjon.DonjonBuilder;
+import donjon.DonjonBuilderXML;
 import donjon.Room;
 import view.HeroPrinter;
 import view.InventairePrinter;
@@ -26,12 +27,20 @@ public class Game {
 		return game;
 	}
 
-	public void startGame() {
+	public void startRandomGame() {
 		hero = new Hero();
 		DonjonBuilder DB = new DonjonBuilder();
 		this.donjon = DB.build();
 		donjon.getRooms().get(0).getPlateau().get(0).get(0).addAcharacter(hero);
 		this.currentRoom= donjon.getRooms().get(0);
+		notifyPrinters(0);
+	}
+	
+	public void startGame() {
+		DonjonBuilderXML DB = new DonjonBuilderXML();
+		donjon = DB.build(System.getProperty("user.dir")+"/src/ressources/donjon1.xml");
+		hero = DB.getHero();
+		currentRoom = DB.getCurrentRoom();
 		notifyPrinters(0);
 	}
 	
@@ -69,7 +78,10 @@ public class Game {
 				break;
 			}
 		}
-		System.out.println("Vous etes mort! Vous avez perdu");
+		if(!hero.isAlive()) {
+			System.out.println("Vous etes mort! Vous avez perdu");
+		}
+		
 	}
 	
 	public void notifyPrinters(int arg) {

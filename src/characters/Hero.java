@@ -32,7 +32,18 @@ public class Hero extends Character{
 		super.setDefense(40);
 		super.setForce(40);
 		inventaire = new Inventaire();
+
 	}
+
+	
+	public Hero(String name, int hp, int force, int defense) {
+		super(name, hp, force, defense);
+		inventaire = new Inventaire();
+		maxHP=hp;
+		armure = Optional.empty();
+		epee = Optional.empty();
+	}
+
 
 	public static Hero getInstance() {
 		if (myhero == null) {

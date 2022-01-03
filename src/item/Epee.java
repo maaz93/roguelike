@@ -27,7 +27,7 @@ public class Epee extends Arme{
 	@Override
 	public void getSymbol() {
 		// TODO Auto-generated method stub
-		System.out.println("e");
+		System.out.print("e");
 	}
 
 }

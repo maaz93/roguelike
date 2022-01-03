@@ -30,7 +30,7 @@ public class Potionhp extends Consommable {
 	@Override
 	public void getSymbol() {
 		// TODO Auto-generated method stub
-		System.out.println("p");
+		System.out.print("p");
 	}
 	
 }

@@ -29,6 +29,6 @@ public class Talisman extends Armure {
 	@Override
 	public void getSymbol() {
 		// TODO Auto-generated method stub
-		System.out.println("t");
+		System.out.print("t");
 	}
 }

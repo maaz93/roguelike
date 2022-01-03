@@ -1,5 +1,7 @@
 package item;
 
+import characters.Monster;
+
 public class FabriqueItem {
 	public Item getPotionhp() {
 		int hp = 5+ (int) (Math.random()*10);
@@ -18,4 +20,18 @@ public class FabriqueItem {
 		Talisman talisman = new Talisman(defense);
 		return talisman;
 	}
+	
+	public Item getItem(String item) {
+		switch (item) {
+		case "potionhp":
+			return getPotionhp();
+		case "epee":
+			return getEpee();
+		case "talisman":
+			return getTalisman();
+		
+		default:
+		throw new IllegalArgumentException("Unexpected value: " + item);
+		}
+	} 
 }

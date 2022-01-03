@@ -20,6 +20,14 @@ public abstract class Character implements Cloneable{
 	public Character() {
 	}
 	
+	public Character(String name, int hp, int force, int defense) {
+		super();
+		this.name = name;
+		this.hp = hp;
+		this.force = force;
+		this.defense = defense;
+	}
+	
 	public Character(String name, int hp, int force, int defense, int level) {
 		super();
 		this.name = name;
