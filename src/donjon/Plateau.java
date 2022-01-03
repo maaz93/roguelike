@@ -39,6 +39,10 @@ public class Plateau<T> extends ArrayList<ArrayList<Case>> {
 		throw new NoStairsFoundException();
 	}
 
+	public void remplaceCase(Case c, int x, int y) {
+		this.get(y).remove(x);
+		this.get(y).add(x, c);
+	}
 	@Override
 	public Plateau<T> clone() {
 		// TODO Auto-generated method stub

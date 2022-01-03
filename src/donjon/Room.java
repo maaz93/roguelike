@@ -28,6 +28,15 @@ public class Room {
 		
 	}
 
+	public Room(Plateau<Case> plateau2, List<Monster> monsters) {
+		// TODO Auto-generated constructor stub
+		this.plateau = plateau2;
+		this.hauteur = plateau2.size();
+		this.longueur = plateau2.get(0).size();
+		this.setMonsters(monsters);
+		
+	}
+
 	public Room(Plateau<Case> plateau2, List<Monster> monsters, int difficulte) {
 		// TODO Auto-generated constructor stub
 		this.plateau = plateau2;

@@ -31,6 +31,20 @@ public class FabriqueMonster {
 		return fantome;
 	}
 	
+	public Monster getMonster(String monster) {
+		switch (monster) {
+		case "gobelin":
+			return getGobelin();
+		case "fantome":
+			return getFantome();
+		case "dragon":
+			return getDragon();
+		
+		default:
+		throw new IllegalArgumentException("Unexpected value: " + monster);
+		}
+	}
+	
 	public Monster getRandomMonster(int difficulte) {
 		double r = Math.random();
 		switch (difficulte) {

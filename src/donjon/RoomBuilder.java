@@ -68,8 +68,9 @@ public class RoomBuilder {
 		int y = 0;
 		x = (int)(Math.random()*longueur);
 		y = (int)(Math.random()*hauteur);
-		this.plateau.get(y).remove(x);
-		this.plateau.get(y).add(x, new CaseEscalier(x,y));
+		
+		this.plateau.remplaceCase(new CaseEscalier(x, y), x, y);
+		
 		for (int i = 0; i < nbMonster; i++) {
 			x = (int)(Math.random()*longueur);
 			y = (int)(Math.random()*hauteur);
