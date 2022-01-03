@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>234</y>
+      <w>132</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>/characters::Character/
+--
+-name: String
+-hp: int
+-force: int
+-defense: int
+-level: int
+-position: Case
+--
++Character(): ctor
++Character(String name, int hp, int force, int defense): ctor
++Character(String name, int hp, int force, int defense, int level): ctor
++getName(): String
++setName(String name): void
++getForce(): int
++setForce(int force): void
++getDefense(): int
++setDefense(int defense): void
++getHp(): int
++setHp(int hp): void
++getLevel(): int
++setLevel(int level): void
++getPosition(): Case
++setPosition(Case position): void
++getPositionXY(): void
++getPositionX(): int
++getPositionY(): int
++isAlive(): boolean
++move(char move, Room room): void
++attack(Character c1): void
++takeDamage(int damage): void
++dropItem(): void
++getSymbol(): void
++clone(): Character
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>621</x>
+      <y>87</y>
+      <w>210</w>
+      <h>159</h>
+    </coordinates>
+    <panel_attributes>donjon::Case
+--
+-description: String
+-name: String
+-items: List&lt;Item&gt;
+-characters: List&lt;Character&gt;
+-coorX: int
+-coorY: int
+--
++Case(): ctor
++Case(String description, String name, List&lt;Item&gt; items, List&lt;Character&gt; characters, int coorX, int coorY): ctor
++Case(int coorX, int coorY): ctor
++getDescription(): String
++setDescription(String description): void
++getName(): String
++setName(String name): void
++getItems(): List&lt;Item&gt;
++setItems(List&lt;Item&gt; items): void
++addAnItem(Item item): void
++deleteAnItem(Item item): void
++getCharacters(): List&lt;Character&gt;
++setCharacters(List&lt;Character&gt; characters): void
++addAcharacter(Character character): void
++deleteAcharacter(Character character): void
++getX(): int
++setX(int coorX): void
++getY(): int
++setY(int coorY): void
++toString(): String
++draw(): void
++clone(): Case
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>357</x>
+      <y>477</y>
+      <w>114</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>characters::Hero
+--
+-maxHP: int
+-myhero = null: Hero
+-inventaire: Inventaire
+-armure: Optional&lt;Armure&gt;
+-epee: Optional&lt;Epee&gt;
+--
++Hero(): ctor
++Hero(String name, int hp, int force, int defense): ctor
++getInstance(): Hero
++getInventaire(): Inventaire
++setInventaire(Inventaire inventaire): void
++getMaxHP(): int
++setMaxHP(int maxHP): void
++getArmure(): Optional&lt;Armure&gt;
++setArmure(Armure armure): void
++getEpee(): Optional&lt;Epee&gt;
++setEpee(Epee epee): void
++clone(): Hero
++getSymbol(): void
++dropItem(): void
++canAttack(Room room): List&lt;Case&gt;
++attack1(Room room): void
++attack1(Case c): void
++removeAnItem(int arg): void
++takeStairs(char etage, Room room, Donjon donjon): void
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>849</x>
+      <y>234</y>
+      <w>147</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>donjon::Room
+--
+-plateau: Plateau&lt;Case&gt;
+-longueur: int
+-hauteur: int
+-monsters: List&lt;Monster&gt;
+-difficulte: int
+--
++Room(): ctor
++Room(int hauteur, int longueur): ctor
++Room(Plateau&lt;Case&gt; plateau2, List&lt;Monster&gt; monsters): ctor
++Room(Plateau&lt;Case&gt; plateau2, List&lt;Monster&gt; monsters, int difficulte): ctor
++getPlateau(): Plateau&lt;Case&gt;
++setPlateau(Plateau&lt;Case&gt; plateau): void
++getHauteur(): int
++setHauteur(int hauteur): void
++getLongueur(): int
++setLongueur(int longueur): void
++getMonsters(): List&lt;Monster&gt;
++setMonsters(List&lt;Monster&gt; monsters): void
++getDifficulte(): int
++setDifficulte(int difficulte): void
++affiche(): void
++toString(): String
++draw(): void
++removeDeadMonsters(): void
++findStairs(): Case
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1044</x>
+      <y>261</y>
+      <w>102</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>donjon::RoomBuilder
+--
+-plateau: Plateau&lt;Case&gt;
+-hauteur: int
+-longueur: int
+-monsters: List&lt;Monster&gt;
+-nbMonster: int
+-difficulte: int
+-clonage = false: boolean
+--
++reset(): RoomBuilder
++dimension(int longueur, int hauteur): RoomBuilder
++nbMonster(int nbmonster): RoomBuilder
++difficulte(int difficulte): RoomBuilder
++clone(Room room): RoomBuilder
++build(): Room
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>642</x>
+      <y>336</y>
+      <w>57</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>base::Game
+--
+-game: Game
+-donjon: Donjon
+-currentRoom: Room
+-hero: Hero
+--
++Game(): ctor
++getInstance(): Game
++startRandomGame(): void
++startGame(): void
++run(): void
++loop(): void
++notifyPrinters(int arg): void
++monstersTurn(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>387</y>
+      <w>147</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>donjon::DonjonBuilderXML
+--
+-currentRoom: Room
+-hero: Hero
+--
++getCurrentRoom(): Room
++getHero(): Hero
+-getDonjonElement(String xmlFile): Element
++build(String xmlFile): Donjon
+-parseRooms(Element donjonElement): List&lt;Room&gt;
+-parseRoom(Element roomElem): Room
+-parseMonsters(Element roomElem, Plateau&lt;Case&gt; plateau): List&lt;Monster&gt;
++parseHero(Element roomElem, Plateau&lt;Case&gt; plateau): boolean
+-parseCaseEscalier(Element caseEscalierElem, Plateau&lt;Case&gt; plateau): void
+-parseItems(Element roomElem, Plateau&lt;Case&gt; plateau): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>615</y>
+      <w>63</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>/item::Consommable/
+--
+-hp: int
+-force: int
+-defense: int
+--
++Consommable(): ctor
++getHp(): int
++setHp(int hp): void
++getForce(): int
++setForce(int force): void
++getDefense(): int
++setDefense(int defense): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>264</y>
+      <w>117</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>base::AImonster
+--
+-hero: Hero
+-monster: Monster
+-room: Room
+--
++AImonster(Monster monster, Hero hero, Room room): ctor
++jouerTour(): void
++canAttack(): boolean
++movetowardsHero(): void
++attack(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>207</x>
+      <y>585</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>characters::Dragon
+--
+--
++Dragon(): ctor
++Dragon(String name, int hp, int force, int defense, int level): ctor
++getCategorie(): String
++setCategorie(String categorie): void
++getSymbol(): void
++clone(): Monster
++dropItem(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>174</x>
+      <y>477</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>/characters::Monster/
+--
+-categorie: String
+--
++Monster(String name, int hp, int force, int defense, int level): ctor
++Monster(): ctor
++getCategorie(): String
++setCategorie(String categorie): void
++toString(): String
++clone(): Monster
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>525</x>
+      <y>615</y>
+      <w>63</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>/item::Armure/
+--
+-hp: int
+-defense: int
+--
++Armure(): ctor
++getHp(): int
++setHp(int hp): void
++getDefense(): int
++setDefense(int defense): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>408</x>
+      <y>663</y>
+      <w>93</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>item::Inventaire
+--
+-MaxCapacity: int
+-serialVersionUID = 1L: long
+--
++Inventaire(): ctor
++Inventaire(int maxCapacity): ctor
++add(Item e): boolean
++addAll(Collection&lt;? extends Item&gt; c): boolean
++draw(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>618</x>
+      <y>0</y>
+      <w>225</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>donjon::CaseEscalier
+--
+--
++CaseEscalier(): ctor
++CaseEscalier(int coorX, int coorY): ctor
++CaseEscalier(String description, String name, List&lt;Item&gt; items, List&lt;Character&gt; characters, int coorX, int coorY): ctor
++draw(): void
++toString(): String
++clone(): Case
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>894</x>
+      <y>420</y>
+      <w>75</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>donjon::Donjon
+--
+-rooms: List&lt;Room&gt;
+--
++Donjon(): ctor
++Donjon(List&lt;Room&gt; rooms): ctor
++getRooms(): List&lt;Room&gt;
++setRooms(List&lt;Room&gt; rooms): void
++NoMonstersLeft(): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>144</y>
+      <w>78</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>donjon::Plateau
+--
+-serialVersionUID = 1L: long
+--
++Plateau(): ctor
++Plateau(int longueur, int hauteur): ctor
++findStairs(): Case
++remplaceCase(Case c, int x, int y): void
++clone(): Plateau&lt;T&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>585</x>
+      <y>534</y>
+      <w>81</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>/item::Item/
+--
+-description: String
+--
++getDescription(): String
++setDescription(String description): void
++toString(): String
++clone(): Item
++getSymbol(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>408</y>
+      <w>87</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>characters::FabriqueMonster
+--
+--
++getGobelin(): Monster
++getDragon(): Monster
++getFantome(): Monster
++getMonster(String monster): Monster
++getRandomMonster(int difficulte): Monster
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>525</y>
+      <w>129</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>characters::Fantome
+--
+--
++Fantome(): ctor
++Fantome(String name, int hp, int force, int defense, int level): ctor
++getSymbol(): void
++clone(): Monster
++dropItem(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>66</x>
+      <y>588</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>characters::Gobelin
+--
+--
++Gobelin(): ctor
++Gobelin(String name, int hp, int force, int defense, int level): ctor
++getSymbol(): void
++clone(): Monster
++dropItem(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>513</y>
+      <w>78</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>donjon::DonjonBuilder
+--
+-rooms: List&lt;Room&gt;
+--
++reset(): DonjonBuilder
++nbRooms(int nb): DonjonBuilder
++clone(Donjon donjon): DonjonBuilder
++build(): Donjon
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>618</x>
+      <y>690</y>
+      <w>45</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>item::Epee
+--
+--
++Epee(): ctor
++Epee(int force): ctor
++toString(): String
++clone(): Item
++getSymbol(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>699</x>
+      <y>702</y>
+      <w>48</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>item::Potionhp
+--
+--
++Potionhp(): ctor
++Potionhp(int hp): ctor
++toString(): String
++clone(): Item
++getSymbol(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>531</x>
+      <y>696</y>
+      <w>57</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>item::Talisman
+--
+--
++Talisman(): ctor
++Talisman(int defense): ctor
++toString(): String
++clone(): Item
++getSymbol(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>615</x>
+      <y>621</y>
+      <w>51</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>/item::Arme/
+--
+-force: int
+--
++Arme(): ctor
++getForce(): int
++setForce(int force): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>549</x>
+      <y>456</y>
+      <w>54</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>item::FabriqueItem
+--
+--
++getPotionhp(): Item
++getEpee(): Item
++getTalisman(): Item
++getItem(String item): Item
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>465</x>
+      <y>381</y>
+      <w>117</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>base::Controller
+--
+~sc = new Scanner(System.in): Scanner
+--
++getKey(Hero hero, Room currentRoom, Donjon donjon): int
++chooseCase(Hero hero, Room currentRoom): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>231</x>
+      <y>405</y>
+      <w>111</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt; 
+</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>333</x>
+      <y>405</y>
+      <w>84</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt; 
+</panel_attributes>
+    <additional_attributes>10.0;10.0;260.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>528</y>
+      <w>42</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt; 
+</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>138</x>
+      <y>528</y>
+      <w>111</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt; 
+</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>126</x>
+      <y>528</y>
+      <w>123</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt; 
+
+
+</panel_attributes>
+    <additional_attributes>390.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>717</x>
+      <y>45</y>
+      <w>30</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>159</y>
+      <w>66</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>200.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>915</x>
+      <y>189</y>
+      <w>15</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;150.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>579</y>
+      <w>78</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>618</x>
+      <y>579</y>
+      <w>36</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>618</x>
+      <y>579</y>
+      <w>108</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>552</x>
+      <y>666</y>
+      <w>27</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>636</x>
+      <y>654</y>
+      <w>27</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>681</y>
+      <w>27</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>411</x>
+      <y>618</y>
+      <w>48</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>555</y>
+      <w>129</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;360.0;180.0;60.0;410.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>150</y>
+      <w>303</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>990.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>573</x>
+      <y>489</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;40.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>447</y>
+      <w>138</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;440.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>993</x>
+      <y>300</y>
+      <w>57</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>966</x>
+      <y>426</y>
+      <w>72</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>966</x>
+      <y>441</y>
+      <w>90</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>519</x>
+      <y>339</y>
+      <w>18</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>Actor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>360</y>
+      <w>9</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>423</x>
+      <y>411</y>
+      <w>105</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>330.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>438</x>
+      <y>372</y>
+      <w>210</w>
+      <h>111</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>680.0;10.0;510.0;190.0;10.0;350.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>927</x>
+      <y>369</y>
+      <w>9</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>417</x>
+      <y>318</y>
+      <w>117</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>370.0;10.0;40.0;110.0;10.0;530.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>261</x>
+      <y>318</y>
+      <w>237</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>770.0;10.0;520.0;50.0;500.0;390.0;10.0;530.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>558</x>
+      <y>318</y>
+      <w>90</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>280.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>696</x>
+      <y>372</y>
+      <w>204</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;660.0;250.0</additional_attributes>
+  </element>
+</diagram>
