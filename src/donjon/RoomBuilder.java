@@ -6,6 +6,7 @@ import characters.Monster;
 import java.util.ArrayList;
 import java.util.List;
 
+import characters.AbstractFabriqueMonster;
 import characters.Character;
 
 public class RoomBuilder {
@@ -63,7 +64,7 @@ public class RoomBuilder {
 		if(difficulte == 0) {
 			difficulte = 1;
 		}
-		FabriqueMonster F = new FabriqueMonster();
+		AbstractFabriqueMonster F = new FabriqueMonster();
 		int x = 0;
 		int y = 0;
 		x = (int)(Math.random()*longueur);

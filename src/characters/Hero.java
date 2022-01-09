@@ -11,12 +11,15 @@ import donjon.CaseEscalier;
 import donjon.Donjon;
 import donjon.Room;
 import exceptions.MultipleMonsterNearException;
+import exceptions.NoItemOnCaseException;
 import exceptions.NoMonsterNearException;
+import exceptions.NoStairsFoundException;
 import exceptions.NotOnStairsException;
 import exceptions.OutOfBoundaryException;
 import item.Armure;
 import item.Epee;
 import item.Inventaire;
+import item.Item;
 
 public class Hero extends Character{
 	private int maxHP;
@@ -156,8 +159,11 @@ public class Hero extends Character{
 	public void removeAnItem(int arg) {
 		inventaire.remove(arg);
 	}
+	public void takeAnItem(Item item) {
+		inventaire.add(item);
+	}
 	
-	public void takeStairs(char etage,Room room, Donjon donjon) throws OutOfBoundaryException,NotOnStairsException{
+	public void takeStairs(char etage,Room room, Donjon donjon) throws OutOfBoundaryException, NotOnStairsException {
 		if (this.getPosition() instanceof CaseEscalier != true) {
 			throw new NotOnStairsException();
 		}
@@ -185,6 +191,20 @@ public class Hero extends Character{
 					super.setPosition(donjon.getRooms().get(roomFloor-1).findStairs());
 				}
 			}
+		}
+	}
+	
+	public void takeItem(Room room) throws NoItemOnCaseException {
+		if (this.getPosition().getItems().size()>0) {
+			List<Item> ItemstoRemoved = new ArrayList<Item>();
+			for (Item item : this.getPosition().getItems()) {
+				takeAnItem(item);
+				ItemstoRemoved.add(item);
+			}
+			this.getPosition().deleteItems(ItemstoRemoved);
+		}
+		else {
+			throw new NoItemOnCaseException();
 		}
 	}
 	@Override

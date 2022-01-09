@@ -1,6 +1,6 @@
 package exceptions;
 
-public class MultipleMonsterNearException extends RuntimeException{
+public class MultipleMonsterNearException extends Exception{
 	
 	public MultipleMonsterNearException(int i) {
 		super("Multiple Monster Near : "+i);

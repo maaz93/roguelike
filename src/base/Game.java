@@ -7,6 +7,7 @@ import donjon.Donjon;
 import donjon.DonjonBuilder;
 import donjon.DonjonBuilderXML;
 import donjon.Room;
+import exceptions.OutOfBoundaryException;
 import view.HeroPrinter;
 import view.InventairePrinter;
 import view.MonsterPrinter;
@@ -107,7 +108,14 @@ public class Game {
 	public void monstersTurn() {
 		
 		if(currentRoom.getMonsters().size() > 0) {
-			currentRoom.getMonsters().forEach(m -> new AImonster(m,hero,currentRoom).jouerTour());
+			currentRoom.getMonsters().forEach(m -> {
+				try {
+					new AImonster(m,hero,currentRoom).jouerTour();
+				} catch (OutOfBoundaryException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 		}
 
 	}

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class NoMonsterNearException extends RuntimeException{
+public class NoMonsterNearException extends Exception{
 
 	public NoMonsterNearException() {
 		super("No Monster Nearby\nVeuillez Reessayer");

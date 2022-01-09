@@ -13,10 +13,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException; // builder.parse()
 
+import characters.AbstractFabriqueMonster;
 import characters.FabriqueMonster;
 import characters.Hero;
 import characters.Monster;
 import exceptions.NoHeroInRoomException;
+import item.AbstractFabriqueItem;
 import item.FabriqueItem;
 import item.Item;
 
@@ -91,7 +93,7 @@ public class DonjonBuilderXML {
 
 
 	private List<Monster> parseMonsters(Element roomElem, Plateau<Case> plateau) {
-		FabriqueMonster Fm = new FabriqueMonster();
+		AbstractFabriqueMonster Fm = new FabriqueMonster();
 		List<Monster> monsters = new ArrayList<Monster>();
 		
 		NodeList nodeList = roomElem.getElementsByTagName("characters").item(0).getChildNodes();
@@ -138,7 +140,7 @@ public class DonjonBuilderXML {
 	}
 	
 	private void parseItems(Element roomElem, Plateau<Case> plateau) {
-		FabriqueItem Fi = new FabriqueItem();
+		AbstractFabriqueItem Fi = new FabriqueItem();
 		
 		NodeList nodeList = roomElem.getElementsByTagName("items").item(0).getChildNodes();
 		for (int i = 0; i < nodeList.getLength(); i++) {

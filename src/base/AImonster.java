@@ -4,6 +4,7 @@ import characters.Character;
 import characters.Hero;
 import characters.Monster;
 import donjon.Room;
+import exceptions.OutOfBoundaryException;
 
 public class AImonster {
 	private Hero hero;
@@ -17,7 +18,7 @@ public class AImonster {
 		this.room = room;
 	}
 
-	public void jouerTour() {
+	public void jouerTour() throws OutOfBoundaryException {
 		if(canAttack() == true) {
 			attack();
 		}
@@ -41,7 +42,7 @@ public class AImonster {
 		return false;
 	}
 	
-	public void movetowardsHero(){
+	public void movetowardsHero() throws OutOfBoundaryException{
 		int x_hero = hero.getPositionX();
 		int y_hero = hero.getPositionY();
 		

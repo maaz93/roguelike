@@ -1,6 +1,6 @@
 package exceptions;
 
-public class OutOfBoundaryException extends RuntimeException{
+public class OutOfBoundaryException extends Exception{
 
 	public OutOfBoundaryException() {
 		super("Mouvement impossible\nVeuillez Reessayer ");

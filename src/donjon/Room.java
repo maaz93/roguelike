@@ -6,6 +6,7 @@ import java.util.List;
 
 import characters.Character;
 import characters.Monster;
+import exceptions.NoStairsFoundException;
 
 public class Room {
 	private Plateau<Case> plateau;

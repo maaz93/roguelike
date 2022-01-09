@@ -8,7 +8,9 @@ import donjon.Case;
 import donjon.Donjon;
 import donjon.Room;
 import exceptions.MultipleMonsterNearException;
+import exceptions.NoItemOnCaseException;
 import exceptions.NoMonsterNearException;
+import exceptions.NoStairsFoundException;
 import exceptions.NotOnStairsException;
 import exceptions.OutOfBoundaryException;
 
@@ -82,6 +84,14 @@ public class Controller {
 				arg=getKey(hero,currentRoom,donjon);
         	}
         	break;
+        case't':
+        	try {
+				hero.takeItem(currentRoom);
+			} catch (NoItemOnCaseException e) {
+				System.out.println(e.getMessage());
+        		Game.getInstance().notifyPrinters(0);
+				arg=getKey(hero,currentRoom,donjon);
+			}
         default:
         	break;
         }

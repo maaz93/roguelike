@@ -1,6 +1,6 @@
 package exceptions;
 
-public class NotOnStairsException extends RuntimeException{
+public class NotOnStairsException extends Exception{
 
 	public NotOnStairsException() {
 		super("Not on stairs");

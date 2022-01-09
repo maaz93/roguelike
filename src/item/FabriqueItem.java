@@ -2,7 +2,7 @@ package item;
 
 import characters.Monster;
 
-public class FabriqueItem {
+public class FabriqueItem extends AbstractFabriqueItem{
 	public Item getPotionhp() {
 		int hp = 5+ (int) (Math.random()*10);
 		Potionhp potionhp = new Potionhp(hp);

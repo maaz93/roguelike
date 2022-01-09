@@ -1,6 +1,6 @@
 package characters;
 
-public class FabriqueMonster {
+public class FabriqueMonster extends AbstractFabriqueMonster {
 	public Monster getGobelin() {
 		String name="Gobelin";
 		int level = 1+ (int) (Math.random()*2);

@@ -1,6 +1,7 @@
 package donjon;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,6 +63,9 @@ public class Case {
 	}
 	public void deleteAnItem(Item item) {
 		this.items.remove(item);
+	}
+	public void deleteItems(List<Item> items) {
+		this.items.removeAll(items);
 	}
 	public List<Character> getCharacters() {
 		return characters;

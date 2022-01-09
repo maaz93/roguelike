@@ -1,6 +1,6 @@
 package exceptions;
 
-public class NoHeroInRoomException extends RuntimeException{
+public class NoHeroInRoomException extends Exception{
 
 	public NoHeroInRoomException() {
 		super();
