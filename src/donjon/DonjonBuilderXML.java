@@ -13,6 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException; // builder.parse()
 
+import base.Game;
 import characters.AbstractFabriqueMonster;
 import characters.FabriqueMonster;
 import characters.Hero;
@@ -27,17 +28,12 @@ import java.io.IOException; // builder.parse()
 public class DonjonBuilderXML {
 
 	private Room currentRoom;
-	private Hero hero;
 	
 	
 	public Room getCurrentRoom() {
 		return currentRoom;
 	}
 
-	
-	public Hero getHero() {
-		return hero;
-	}
 
 
 	private Element getDonjonElement(String xmlFile) {
@@ -125,8 +121,11 @@ public class DonjonBuilderXML {
 					int hp = Integer.parseInt(characterElem.getElementsByTagName("hp").item(0).getTextContent());
 					int def = Integer.parseInt(characterElem.getElementsByTagName("def").item(0).getTextContent());
 					int force = Integer.parseInt(characterElem.getElementsByTagName("force").item(0).getTextContent());
-					hero = new Hero("Hero",hp,force,def); 
-					plateau.get(y).get(x).addAcharacter(hero);
+					Hero.getInstance().setDefense(def);
+					Hero.getInstance().setForce(force);
+					Hero.getInstance().setMaxHP(hp);
+					Hero.getInstance().setHp(hp);
+					plateau.get(y).get(x).addAcharacter(Hero.getInstance());
 					return true ;
 				}
 			}
@@ -150,7 +149,7 @@ public class DonjonBuilderXML {
 				Item it = Fi.getItem(itemElem.getElementsByTagName("type").item(0).getTextContent());
 				int x_item = Integer.parseInt(itemElem.getElementsByTagName("x").item(0).getTextContent());
 				int y_item = Integer.parseInt(itemElem.getElementsByTagName("y").item(0).getTextContent());
-				plateau.get(y_item).get(x_item).addAnItem(it);;
+				plateau.get(y_item).get(x_item).addAnItem(it);
 			}
 		}
 	}

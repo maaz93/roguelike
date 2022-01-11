@@ -17,7 +17,7 @@ public class Game {
 	private static Game game;
 	private Donjon donjon;
 	private Room currentRoom;
-	private Hero hero;
+	private Hero hero = Hero.getInstance();
 	
 	public Game() {
 		super();
@@ -29,7 +29,6 @@ public class Game {
 	}
 
 	public void startRandomGame() {
-		hero = new Hero();
 		DonjonBuilder DB = new DonjonBuilder();
 		this.donjon = DB.build();
 		donjon.getRooms().get(0).getPlateau().get(0).get(0).addAcharacter(hero);
@@ -40,7 +39,6 @@ public class Game {
 	public void startGame() {
 		DonjonBuilderXML DB = new DonjonBuilderXML();
 		donjon = DB.build(System.getProperty("user.dir")+"/src/ressources/donjon1.xml");
-		hero = DB.getHero();
 		currentRoom = DB.getCurrentRoom();
 		notifyPrinters(0);
 	}

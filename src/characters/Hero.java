@@ -28,18 +28,20 @@ public class Hero extends Character{
 	private Optional<Armure> armure;
 	private Optional<Epee> epee;
 
-	public Hero() {
+	private Hero() {
 		// TODO Auto-generated constructor stub
 		maxHP=40;
 		super.setHp(maxHP);
 		super.setDefense(40);
 		super.setForce(40);
 		inventaire = new Inventaire();
+		armure = Optional.empty();
+		epee = Optional.empty();
 
 	}
 
 	
-	public Hero(String name, int hp, int force, int defense) {
+	private Hero(String name, int hp, int force, int defense) {
 		super(name, hp, force, defense);
 		inventaire = new Inventaire();
 		maxHP=hp;
